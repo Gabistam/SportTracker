@@ -1,11 +1,13 @@
 # db_config.py
-import os
 import psycopg2
 from psycopg2 import pool
-from dotenv import load_dotenv
 
-# Charger les variables d'environnement depuis le fichier .env
-load_dotenv()
+# TODO: Importez le module os et dotenv pour charger les variables d'environnement
+# import os
+# from dotenv import load_dotenv
+
+# TODO: Chargez les variables d'environnement depuis le fichier .env
+# load_dotenv()
 
 class DatabaseConnection:
     _connection_pool = None
@@ -14,13 +16,14 @@ class DatabaseConnection:
     def initialize_pool(cls, config=None):
         """Initialise le pool de connexions à PostgreSQL"""
         if config is None:
-            # Configuration par défaut utilisant les variables d'environnement
+            # TODO: Modifiez cette configuration pour utiliser les variables d'environnement
+            # Actuellement, les valeurs sont codées en dur (hardcoded)
             config = {
-                'host': os.getenv('DB_HOST', 'localhost'),
-                'database': os.getenv('DB_NAME', 'sporttracker'),
-                'user': os.getenv('DB_USER', 'postgres'),
-                'password': os.getenv('DB_PASSWORD', ''),
-                'port': os.getenv('DB_PORT', '5432')
+                'host': 'localhost',
+                'database': 'sporttracker',
+                'user': 'postgres',          # À remplacer par l'utilisateur créé pour l'application
+                'password': 'password',      # À remplacer par un mot de passe sécurisé
+                'port': '5432'
             }
         
         try:
